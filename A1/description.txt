@@ -1,0 +1,30 @@
+Finite State Machine Cryptography
+---------------------------------
+[Adam Kimball, Graham Northup]
+
+Input:
+
+	e <key>: Encrypt stdin to stdout using <key>
+	d <key>: Decrypt stdin to stdout using <key>
+	n: Write a random key to stdout
+	i: Write an identity key to stdout
+
+Example inputs: 
+	1)echo "Hello, world!" | ./fmscrypt e random_key
+	2)echo "Hello, world!" | ./fmscrypt e random_key | ./fmscrypt d random_key
+
+Example outputs:
+	1)*encrypted 'Hello, World!' string*
+	2)"Hello, world!"
+
+This crypto-system is a shared key monoalphabetic feistel-esque stream cipher. 
+
+From a high-level perspective, FSMCrypt works by taking a key, and using it to generate a state machine. This state machine's transitions can be used to encrypt
+any series of ASCII characters, and can also be used in reverse order to decrypt any previously encrypted message. The state transitions form a mapping for any 
+given ASCII character, but will be different for each iteration of that character within the input, which helps eliminate the weaknesses of most monoalphabetic
+ciphers..  Each generated key should be 128k, and since they are generated at random, this should theoretically be scalable to any number of rounds, provided all 
+keys are given to the recipient.
+
+The code is internally documented fairly well, so any particular implementation questions should likely be easily answered by glancing through it.
+
+The program does not require any special gcc arguments.

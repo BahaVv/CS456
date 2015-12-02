@@ -1,0 +1,13 @@
+CS456/MA456/CS556 Cryptography. Assignment 2 (Fall 2015)
+For this assignment, write your own implementation of the RSA 
+cryptosystem in a programming language of your choice.
+Allow the user to choose the bit-length for their prime numbers. 
+Your cryptosystem should encrypt only single ASCII characters from text files 
+without salting.
+The ciphertext should be an ASCII file that is a sequence of numbers separated by newlines. 
+For the submission, send this text file back via email encrypted 
+using your own separate RSA keys. 
+In the email, specify the RSA modulus and the secret exponent required 
+to decrypt the file so I can decrypt it properly. 
+As a bonus, find the best known factoring algorithm and report how it performs 
+in cracking this assignment
